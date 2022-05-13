@@ -34,13 +34,6 @@ if __name__ == '__main__':
     x = [-0.175, 0.318, 0.969]
     y = [2.679, 2.845, 0.471]
 
-    def f(x):
-        #return np.cos(np.sin(np.log(x**2)))
-        return pow(math.cos(x),3)+2*pow(math.cos(x),2)+1 
-
-    for i in x:
-        y.append(f(i))
-
     coefs = dif_div(x, y)
     p = build_func(x, coefs)
     print(coefs)
