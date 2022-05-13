@@ -1,0 +1,44 @@
+import numpy as np
+
+
+def poly(x,y):
+    n = len(x)-1
+    A =[]
+    B =[]
+    for xi in x:
+        row = [1]
+        for j in range(1, n+1):
+            row.append(xi ** j)
+        A.append(row)
+    return np.linalg.solve(A, y)
+
+def func_poly(x, coeffs):
+    first=coeffs[0]
+    return first + sum([ai * x ** j for j, ai in enumerate(coeffs[1:], 1)])
+
+if __name__ == '__main__':
+    #valores das listas
+    x = [-0.736, -0.145, 0.714]
+    y = []
+    def f(x):
+        # função f(x) aqui
+        return 1 / (1 + 25*x*x)
+    
+    for xi in x:
+        y.append(f(xi))
+
+    coeffs = poly(x,y)
+    
+#imprime coeffs:
+    #for x in (coeffs):
+        #print("%.16f" %x)
+
+#calcula valores de x
+    def p(x):
+        return func_poly(x,coeffs)        
+
+# calcula f(x) - p(x):
+print(abs(f(-0.814) - p(-0.814)))
+print(abs(f(0.137) - p(0.137)))
+        
+    
